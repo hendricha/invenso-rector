@@ -23,14 +23,22 @@ use Rector\Php80\ValueObject\AnnotationToAttribute;
 return static function (RectorConfig $rectorConfig) : void {
     $rectorConfig->ruleWithConfiguration(AnnotationToAttributeRector::class, [
         // annotation
-        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiFilter'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiResource'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiSubresource'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiProperty'),
+        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiFilter', 'ApiPlatform\\Metadata\\ApiFilter'),
+        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiResource', 'ApiPlatform\\Metadata\\ApiResource'),
+        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiSubresource', 'ApiPlatform\\Metadata\\ApiSubresource'),
+        new AnnotationToAttribute('ApiPlatform\\Core\\Annotation\\ApiProperty', 'ApiPlatform\\Metadata\\ApiProperty'),
         // filter
-        new AnnotationToAttribute('ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\BooleanFilter'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\ExistsFilter'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\OrderFilter'),
-        new AnnotationToAttribute('ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\OrderFilter'),
+        new AnnotationToAttribute(
+            'ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter',
+            'ApiPlatform\Metadata\Filter\BooleanFilter'
+        ),
+        new AnnotationToAttribute(
+            'ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter',
+            'ApiPlatform\Metadata\Filter\ExistsFilter'
+        ),
+        new AnnotationToAttribute(
+            'ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter',
+            'ApiPlatform\Metadata\Filter\OrderFilter'
+        ),
     ]);
 };
